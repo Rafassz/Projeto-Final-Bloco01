@@ -5,7 +5,7 @@ import ecommerce.model.Estoque;
 public interface EcommerceRepository {
 
 	//CRUD da Conta
-	
+	public void procurarProduto(int numero);
 	public void listarTodas();
 	public void Cadastrar(Estoque Cadastrar);
 	public void Atualizar(Estoque Atualizar);

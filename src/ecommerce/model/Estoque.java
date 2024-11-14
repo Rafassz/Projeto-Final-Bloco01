@@ -4,14 +4,12 @@ public abstract class Estoque {
 
 	private String produto;
 	private int quantidade;
-	private int tipo;
 	private int lista;
 	private int numero;
 
-	public Estoque(String produto, int quantidade, int tipo, int lista, int numero) {
+	public Estoque(String produto, int quantidade, int lista, int numero) {
 		this.produto = produto;
 		this.quantidade = quantidade;
-		this.tipo = tipo;
 		this.lista = lista;
 		this.numero = numero;
 	}
@@ -32,13 +30,6 @@ public abstract class Estoque {
 		this.quantidade = quantidade;
 	}
 
-	public int getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
 
 	public int getLista() {
 		return lista;
@@ -56,25 +47,10 @@ public abstract class Estoque {
 		this.numero = numero;
 	}
 
-	public void Pagamento() {
-
-		String tipo = " ";
-
-		switch (this.tipo) {
-		case 1 -> System.out.println("Débito Selecionado");
-		case 2 -> System.out.println("Crédito Selecionado");
-		}
-
-	}
-
-	public void visualizar() {
-		System.out.println("****************************************************************");
+	public static void visualizar() {
+		
 		System.out.println("           PRODUTOS            |              VALOR             ");
-		System.out.println("           PRODUTOS            |              VALOR             ");
-		System.out.println("           PRODUTOS            |              VALOR             ");
-		System.out.println("           PRODUTOS            |              VALOR             ");
-		System.out.println("           PRODUTOS            |              VALOR             ");
-		System.out.println("           PRODUTOS            |              VALOR             ");
+		
 
 	}
 
