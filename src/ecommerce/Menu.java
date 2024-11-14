@@ -1,8 +1,10 @@
 package ecommerce;
 
 import java.util.InputMismatchException;
+import ecommerce.model.Estoque;
 import java.util.Scanner;
 import ecomerce.util.Cores;
+import ecommerce.model.Caixa;
 
 public class Menu {
 
@@ -10,7 +12,7 @@ public class Menu {
 
 	public static void main(String[] args) {
 
-		int opcao;
+		int opcao,tipo;		
 
 		while (true) {
 			
@@ -65,13 +67,14 @@ public class Menu {
 				break; 
 			case 6:
 				System.out.println(Cores.TEXT_YELLOW + Cores.ANSI_BLACK_BACKGROUND + "                       Teste (Versão para Clientes)               \n\n");
-				System.out.println("                        Iniciando...                            ");
-				break; 
-			case 7:
-				System.out.println(Cores.TEXT_YELLOW + "Finalizando Execução...\n\n");
-
-				break;
-				
+				System.out.println("                        Iniciando...                            \n\n");
+				System.out.println(Cores.TEXT_YELLOW + Cores.ANSI_BLACK_BACKGROUND
+						+ "****************************************************************");
+				System.out.println("                                                                ");
+				System.out.println("                     MERCADINHO DO GORDO                        ");
+				System.out.println("                                                                ");
+				System.out.println("****************************************************************");
+				break; 				
 				
 			}
 
