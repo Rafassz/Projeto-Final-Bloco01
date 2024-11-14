@@ -3,71 +3,63 @@ package ecommerce.controller;
 import java.util.ArrayList;
 
 import ecommerce.model.Estoque;
+import ecommerce.model.Loja;
 import ecommerce.repository.EcommerceRepository;
 
 public class EcommerceController implements EcommerceRepository {
 
-	private ArrayList<Estoque> ListaProdutos = new ArrayList<Estoque>();
+	private ArrayList<Loja> ListaProdutos = new ArrayList<Loja>();
 	int numero = 0;
 
 	@Override
-	public void procurarProduto(int numero) {
-		var Estoque = procurarNoEstoque(numero);
-		
-		if(Estoque != null) {
-			Estoque.visualizar();
-		}else {
-			System.out.println("O produto número: " + numero + "Não foi encontrado!");
-		}
-	}
-
-	@Override
 	public void listarTodas() {
-		for (var EcommerceModelo : ListaProdutos) {
-			Estoque.visualizar();
+		for (var ID : ListaProdutos) {
+			((Loja) ID).visualizar();
 		}
 	}
 
 	@Override
-	public void Cadastrar(Estoque Cadastrar) {
-		ListaProdutos.addAll(ListaProdutos);
-		System.out.println("O produto Número: ");
+	public void Cadastrar(Loja Cadastrar) {
+		ListaProdutos.add(Cadastrar);
+		System.out.println("O Produto Número: " + numero + " foi Cadastrado com Sucesso!!");
+	}
+
+	@Override
+	public void Atualizar(Loja Atualizar) {
+		var ID = buscarNaCollection(Atualizar.getNumero());
+
+		if (ID != null) {
+			ListaProdutos.set(ListaProdutos.indexOf(ID), Atualizar);
+			System.out.println("\nO Produto Número: " + Atualizar.getNumero() + " foi atualizado com sucesso!!");
+		} else {
+			System.out.println("\nO produto Número: " + Atualizar.getNumero() + " não foi encontrado!!");
+		}
 
 	}
 
 	@Override
-	public void Atualizar(Estoque Atualizar) {
-		// TODO Auto-generated method stub
+	public void Deletar(int numero) {
+		var ID = buscarNaCollection(numero);
 
-	}
-
-	@Override
-	public void Deletar(Estoque Deletar) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void troco(int numero, float valorproduto) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void deposito(int numero, float valorproduto) {
-		// TODO Auto-generated method stub
-
+		if (ID != null) {
+			if (ListaProdutos.remove(ID) == true) {
+				System.out.println("\nO produto Número: " + numero + " foi Deletado com Sucesso!!");
+			} else {
+				System.out.println("\nO Produto Número: " + numero + " não foi encontrado!!");
+			}
+		}
 	}
 
 	public int gerarNumero() {
 		return ++numero;
 	}
 
-	public void procurarNoEstoque(int numero) {
-		for (var Estoque : ListaProdutos) {
-			if (Estoque.getNumero() == numero) {
-				return;
+	public Loja buscarNaCollection(int numero) {
+		for (var ID : ListaProdutos) {
+			if (ID.getNumero() == numero) {
+				return ID;
 			}
 		}
+		return null;
 	}
 }
